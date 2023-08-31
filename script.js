@@ -3,8 +3,9 @@ const loadVideos = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/1000`);
     const data = await res.json();
     const videos = data.data;
-    console.log(data);
+    // console.log(data);
     displayVideos(videos);
+    loadCategory();
 }
 
 const displayVideos = (videos) => {
@@ -39,6 +40,25 @@ const displayVideos = (videos) => {
         `
         videoContainer.appendChild(videoCard);
     });
+}
+
+const loadCategory = async () => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
+    const data = await res.json();
+    const categories = data.data;
+    console.log(categories);
+    categoryBtnLoader(categories);
+}
+
+const categoryBtnLoader = (categories) => {
+    const categoryContainer = document.getElementById('category-container');
+    categories.forEach(category => {
+        const categoryBtn = document.createElement('button');
+        categoryBtn.classList = `btn btn-sm px-4 rounded border-0 bg-gray-200 text-black hover:bg-gray-200`;
+        categoryBtn.innerHTML = `${category.category}`;
+        categoryContainer.appendChild(categoryBtn);
+    })
+
 }
 
 loadVideos();
