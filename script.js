@@ -67,6 +67,9 @@ const loadCategory = async () => {
     const categories = data.data;
     categoryBtnLoader(categories);
 
+    const allCategoryBtn = document.getElementById('btn-1000');
+    allCategoryBtn.click();
+    
     loadVideos(1000);
 }
 
