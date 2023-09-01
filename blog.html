@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <title>Blog</title>
 </head>
 
-<body class="bg-white">
+<body>
     <header class="container mx-auto p-5">
         <nav class="justify-between items-center border-b-2 py-10">
             <div class="navbar">
@@ -33,69 +33,65 @@
             </div>
         </nav>
     </header>
-    <main class="container mx-auto m-5 p-32 ">
-        <section class="space-y-5 text-black">
+    <main class="container w-3/4 max-h-screen overflow-y-auto mx-auto p-8 shadow-xl rounded-2xl">
+        <section class="space-y-3 text-black">
             <div class="collapse collapse-arrow bg-white">
                 <input type="radio" name="my-accordion-2" checked="checked" />
                 <div class="collapse-title text-xl font-medium">
-                    Discuss the scope of `var`, `let`, and `const`
+                    Discuss the scope of 'var', 'let', and 'const'
                 </div>
                 <div class="collapse-content">
-                    <p>Whether a variable is declared using 'var', 'let', or 'const' determines its scope in JavaScript.
-                        The scope determines where in your code a variable can be used and accessed. Let's talk about
-                        each variable declaration's scope:
+                    <p>Three options are available in JavaScript when creating variables: var, let, and const. The scope
+                        of a variable is determined by each of these choices, and that is what we mean by the word
+                        'scope'. Let's now discuss scope. Where a variable can be used or accessed within the program is
+                        indicated by its scope. It's similar to knowing where in your home a particular item can be
+                        used. You can use a fork in the kitchen but not in the bedroom, for instance.
                         <br><br>
                         <strong class="text-xl">1. 'var' Scope</strong>
                         <br>
-                        Block scope is not available to variables declared with the 'var' keyword, only function or
-                        global scope. This means that regardless of block statements like "if," "for," or "while" loops,
-                        they are accessible both within the function and globally. They are also susceptible to a
-                        compilation process known as "hoisting," which involves moving the variable declaration to the
-                        top of its scope. The assignment is still at its original location, nevertheless.
-
+                        'var' is a keyword in programming that is used to declare variables. A variable functions as a
+                        sort of container for the data or information that a computer program needs. Consider it as a
+                        container in which you can store stuff.
                         <br><br>
-                        <strong class="text-xl">2. 'let' Scope:</strong>
+                        <strong class="text-xl">2. 'let' & 'const' Scope:</strong>
                         <br>
-                        Variables declared with the 'let' keyword have block scope, which means that only
-                        the block in which they are defined can access them. In comparison to 'var', it's frequently a
-                        more logical and anticipated action. Additionally, unlike 'var' variables, 'let' variables are
-                        not elevated to the top of their scope, reducing the chance of confusion.
-                        <br><br>
-                        <strong class="text-xl">3. 'const' Object:</strong>
-                        <br>
-                        Like 'let', variables declared with 'const' also have block scope. However, they also contain
-                        the restriction that once their value has been assigned, it cannot be changed. For creating
-                        values that must stay consistent throughout the program, "const" variables are helpful.
-
+                        'let' and 'const' function like variables with boundaries. They are limited to moving around in
+                        the code block where they were initially formed. These variables only affect the smaller
+                        sections of your code, such as a block surrounded by curly braces, and have what is known as
+                        'block scope', which limits their use. While 'const' cannot change its value, 'let' can.
+                        Consider 'let' to be a variable that can alter its attire (value) within its block, whereas
+                        'const' is like a variable wearing a fixed wardrobe that cannot be changed.
                     </p>
                 </div>
             </div>
             <div class="collapse collapse-arrow bg-white">
                 <input type="radio" name="my-accordion-2" />
                 <div class="collapse-title text-xl font-medium">
-                    Tell us the use cases of `null` and `undefined`
+                    Tell us the use cases of 'null' and 'undefined'
                 </div>
                 <div class="collapse-content">
-                    <p>In JavaScript, the special values "null" and "undefined" both denote the absence of a meaningful
+                    <p>In JavaScript, the special values 'null' and 'undefined' both denote the absence of a meaningful
                         value. Although they share some similarities, they are applied in slightly different situations.
                         'null' and 'undefined' have the following use cases:
                         <br><br>
                         <strong class="text-xl">1. 'null' Use Cases:</strong>
                         <br>
-                        - Explicitly Indicating Absence: You can use 'null' to expressively state
+                        - You can use 'null' to expressively state
                         that a variable or object attribute has no value or is purposefully empty.
-                        - Empty Placeholder: You could occasionally use "null" as a stand-in until a value is set to it
+                        <br>
+                        - You could occasionally use 'null' as a stand-in until a value is set to it
                         or becomes available.
-                        - Comparison to Test for Absence: You can check whether a variable has a value by using the word
-                        "null." 'null' is only equal to 'null' or 'undefined' when compared with '==' (loose equality),
+                        <br>
+                        - You can check whether a variable has a value by using the word
+                        'null'. 'null' is only equal to 'null' or 'undefined' when compared with '==' (loose equality),
                         which can be helpful for determining whether a variable has been initialized.
                         <br><br>
                         <strong class="text-xl">2. 'undefined' Use Cases:</strong>
                         <br>
                         - Implicit Absence: Variables that are declared but not given
-                        a value typically have the value "undefined." This shows that the variable is present but
+                        a value typically have the value 'undefined'. This shows that the variable is present but
                         undefined.
-                        - Function Parameters: Extra parameters will have the value "undefined" if a function is
+                        - Function Parameters: Extra parameters will have the value 'undefined' if a function is
                         invoked with fewer arguments than it defines parameters for.
                         - Access to Property: The outcome will be 'undefined' if you attempt to access an object
                         attribute that doesn't exist.
@@ -111,9 +107,7 @@
                 <div class="collapse-content">
                     <p>Imagine you're sending a letter to your friend. You put it in an envelope, write their address on
                         it, and drop it in the mailbox. REST API is kind of like that, but for computers to talk to each
-                        other over the internet.
-                        <br><br>
-                        This is how it goes:
+                        other over the internet. This is how it goes:
                         <br><br>
                         <strong class="text-xl">1. Envelope:</strong>
                         <br>
@@ -131,16 +125,12 @@
                         computer to perform a task for you.
                         <br><br>
                         <strong class="text-xl">4. Reply with:</strong>
-                        <br>After receiving and reading the letter, your
-                        friend might respond in writing.
+                        <br>After receiving and reading the letter, your friend might respond in writing.
                         When you ask a computer a question via an API, the machine responds with the data you
-                        requested.
-                        A REST API functions as a technology that facilitates information sharing between computers.
-                        Similar to how you use addresses to mail letters, they utilize addresses (URLs) to send and
-                        receive data. It enables the collaboration and information exchange of apps and websites
-                        through
-                        the internet.
-
+                        requested. A REST API functions as a technology that facilitates information sharing between
+                        computers. Similar to how you use addresses to mail letters, they utilize addresses (URLs) to
+                        send and receive data. It enables the collaboration and information exchange of apps and
+                        websites through the internet.
                     </p>
                 </div>
             </div>

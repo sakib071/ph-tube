@@ -78,7 +78,7 @@ const categoryBtnLoader = (categories) => {
     categories.forEach(category => {
         const categoryBtn = document.createElement('button');
         const categoryId = category.category_id;
-        categoryBtn.classList = `btn btn-sm px-4 rounded border-0 bg-gray-200 text-black hover:text-white category-btn`;
+        categoryBtn.classList = `btn btn-sm px-4 rounded border-0 bg-gray-200 text-black hover:bg-black hover:text-white category-btn`;
         categoryBtn.id = 'btn-' + categoryId;
         categoryBtn.innerHTML = `${category.category}`;
         categoryBtn.addEventListener('click', () => {
