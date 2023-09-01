@@ -1,14 +1,14 @@
-const loadVideos = async () => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/1000`);
+const loadVideos = async (categoryId) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data = await res.json();
     const videos = data.data;
     // console.log(data);
     displayVideos(videos);
-    loadCategory();
 }
 
 const displayVideos = (videos) => {
     const videoContainer = document.getElementById('video-container');
+    videoContainer.innerHTML = '';
 
     videos.forEach(video => {
         const videoCard = document.createElement('div');
@@ -44,8 +44,9 @@ const loadCategory = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
     const data = await res.json();
     const categories = data.data;
-    // console.log(categories);
+    console.log(categories);
     categoryBtnLoader(categories);
+    loadVideos(1000);
 }
 
 const categoryBtnLoader = (categories) => {
@@ -53,30 +54,16 @@ const categoryBtnLoader = (categories) => {
     categories.forEach(category => {
         const categoryBtn = document.createElement('button');
         const categoryId = category.category_id;
-        // console.log(categoryId);
+        console.log(categoryId);
         categoryBtn.classList = `btn btn-sm px-4 rounded border-0 bg-gray-200 text-black hover:bg-gray-200`;
         categoryBtn.id = 'btn-' + categoryId;
-        categoryBtn.onclick = () => {
-            btnShowAll(categoryId);
-        };
-        console.log(categoryBtn.id);
         categoryBtn.innerHTML = `${category.category}`;
+        categoryBtn.addEventListener('click', () => {
+            loadVideos(categoryId);
+        })
         categoryContainer.appendChild(categoryBtn);
-        btnShowAll(categoryBtn.id);
     })
 
 }
 
-const btnShowAll = (categoryShow) => {
-    const videoContainer = document.getElementById('video-container');
-    videoContainer.innerHTML = '';
-
-    if (categoryId == 1001) {
-        loadCategory(categoryId);
-    }
-    else {
-        console.log('Nothing to load');
-    }
-}
-
-loadVideos();
+loadCategory();
