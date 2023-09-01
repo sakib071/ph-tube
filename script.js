@@ -1,8 +1,31 @@
+let videosData = [];
+
 const loadVideos = async (categoryId) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
+
     const data = await res.json();
     const videos = data.data;
-    displayVideos(videos);
+    if (!videos.length) {
+        console.log('nothing');
+        const videoContainer = document.getElementById('video-container');
+        videoContainer.innerHTML = '';
+        const videoCard = document.createElement('div');
+        videoCard.classList = `flex h-[38rem] flex-col item-center justify-center text-center mx-auto m-5`;
+        videoContainer.classList.remove('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-4')
+        videoCard.innerHTML = `
+        <img class="mx-auto m-5" src="./images/Icon.png">
+        <p class='text-2xl text-black' >Oops!! Sorry, There is no content here</p>
+        `
+        videoContainer.appendChild(videoCard);
+    }
+    else {
+        const videoContainer = document.getElementById('video-container');
+        videoContainer.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-4')
+        displayVideos(videos);
+
+    }
+    videosData = videos;
+
 }
 
 const displayVideos = (videos) => {
@@ -11,7 +34,6 @@ const displayVideos = (videos) => {
 
     videos.forEach(video => {
         const videoCard = document.createElement('div');
-
         const viewDateString = video.others.posted_date;
         const viewHour = Math.floor(parseFloat(viewDateString) / 3600);
         const remainSec = parseFloat(viewDateString) % 3600;
@@ -43,13 +65,14 @@ const loadCategory = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
     const data = await res.json();
     const categories = data.data;
-    // console.log(categories);
     categoryBtnLoader(categories);
+
     loadVideos(1000);
 }
 
 const categoryBtnLoader = (categories) => {
     const categoryContainer = document.getElementById('category-container');
+
     let activeButton = null;
 
     categories.forEach(category => {
@@ -71,5 +94,17 @@ const categoryBtnLoader = (categories) => {
     })
 
 }
+
+const sortByViews = () => {
+    const videoContainer = document.getElementById('video-container');
+    videoContainer.innerHTML = '';
+    const sortedVideos = videosData.sort((a, b) => {
+        const viewA = parseInt(a.others.views.replace('K', '000'));
+        const viewB = parseInt(b.others.views.replace('K', '000'));
+        return viewB - viewA;
+    })
+    displayVideos(sortedVideos);
+}
+
 
 loadCategory();
